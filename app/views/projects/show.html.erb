@@ -1,9 +1,29 @@
 <p id="notice"><%= notice %></p>
 
-<p>
-  <strong>Name:</strong>
-  <%= @project.name %>
-</p>
+<h1><%= @project.name %></h1>
+
+<h2>Tasks</h2>
+
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Description</th>
+      <th>Difficulty</th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+  <% @project.tasks.each do |task| %>
+    <tr>
+      <td><%= task.name %></td>
+      <td><%= task.description %></td>
+      <td><%= task.difficulty_level %></td>
+      <td><%= link_to 'Show', task, class: 'btn' %></td>
+    </tr>
+  <% end %>
+  </tbody>
+</table>
 
 <%= link_to 'Edit', edit_project_path(@project) %> |
 <%= link_to 'Back', projects_path %>

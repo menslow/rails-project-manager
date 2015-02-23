@@ -4,7 +4,7 @@ class Project < ActiveRecord::Base
   has_many :project_users
   has_many :users, through: :project_users
 
-  has_many :tasks
+  has_many :tasks, dependent: :destroy
 
 
   # # complicated version: 
