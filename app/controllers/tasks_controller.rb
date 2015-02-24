@@ -4,7 +4,7 @@ class TasksController < ApplicationController
   respond_to :html, :json
 
   def index
-    @tasks = Task.all
+    @tasks = Task.where(project_id: params[:project_id])
     respond_with(@tasks)
   end
 
@@ -42,6 +42,6 @@ class TasksController < ApplicationController
     end
 
     def task_params
-      params.require(:task).permit(:name, :description, :difficulty_level)
+      params.require(:task).permit(:name, :description, :difficulty_level, :project_id)
     end
 end
